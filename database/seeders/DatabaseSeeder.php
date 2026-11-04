@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,11 +14,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        // A ORDEM importa: produtos dependem de categorias e fornecedores
+        // (chaves estrangeiras), então esses dois têm que existir antes.
+        $this->call([
+            UserSeeder::class,
+            CategoriaSeeder::class,
+            FornecedorSeeder::class,
+            ProdutoSeeder::class,
         ]);
     }
 }
