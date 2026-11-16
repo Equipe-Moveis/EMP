@@ -1,0 +1,373 @@
+/* ========================================
+   GERAL
+   ======================================== */
+body:not(.login-page) {
+    background-color: #0d1f3c;
+    color: #e6f1fb;
+}
+
+/* ========================================
+   LOGIN
+   ======================================== */
+body.login-page {
+    background-image: url("/images/fundo-login.jpg") !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+    background-color: transparent !important;
+    color: #0e5ca5;
+    min-height: 100vh;
+}
+body.login-page::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(7, 16, 32, 0.7);
+    z-index: 0;
+}
+body.login-page .container {
+    position: relative;
+    z-index: 1;
+}
+body.login-page .card {
+    background-color: rgba(7, 16, 32, 0.85) !important;
+    border: 0.5px solid #0c447c;
+    border-radius: 12px;
+}
+body.login-page .card h5 {
+    color: #064e92;
+    font-weight: 500;
+}
+body.login-page .card p {
+    color: #85b7eb !important;
+}
+body.login-page .btn {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* ========================================
+   NAVBAR
+   ======================================== */
+nav,
+nav .nav-wrapper {
+    background-color: #071020;
+    border-bottom: 1px solid #0c447c;
+}
+nav .nav-wrapper a {
+    color: #85b7eb;
+}
+nav .nav-wrapper a:hover {
+    color: #e6f1fb;
+}
+
+/* ========================================
+   CARDS
+   ======================================== */
+.card {
+    background-color: #071020;
+    border: 0.5px solid #0c447c;
+    color: #e6f1fb;
+}
+.card .card-content {
+    color: #b5d4f4;
+}
+
+/* ========================================
+   INPUTS
+   ======================================== */
+input,
+textarea,
+select {
+    color: #e6f1fb !important;
+}
+label {
+    color: #85b7eb !important;
+}
+.input-field input:focus + label {
+    color: #378add !important;
+}
+.input-field input:focus {
+    border-bottom: 1px solid #378add !important;
+    box-shadow: 0 1px 0 0 #378add !important;
+}
+
+/* ========================================
+   BOTÕES
+   ======================================== */
+.btn,
+.btn-large {
+    background-color: #185fa5;
+}
+.btn:hover,
+.btn-large:hover {
+    background-color: #378add;
+}
+
+/* ========================================
+   TABELAS
+   ======================================== */
+
+/* Fundo da tabela */
+table {
+    background-color: #071020 !important;
+}
+
+/* Cabeçalho */
+table thead th {
+    background-color: #0c447c !important;
+    color: #ffffff !important;
+}
+
+/* Células e descrições */
+table tbody td {
+    background-color: #1d2e4b !important;
+    color: #ffff !important;
+}
+
+/* Linhas alternadas */
+table.striped tbody tr:nth-child(odd) td {
+    background-color: #131822 !important;
+}
+
+/* Quando passar o mouse */
+table tbody tr:hover td {
+    background-color: #185fa5 !important;
+    color: white !important;
+}
+
+/* ========================================
+   SIDENAV MOBILE
+   ======================================== */
+.sidenav {
+    background-color: #071020;
+}
+.sidenav a {
+    color: #85b7eb !important;
+}
+
+/* ========================================
+   DASHBOARD — cards do topo
+   ======================================== */
+.dash-top {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+}
+.dash-top-card {
+    background: #071020;
+    border: 0.5px solid #0c447c;
+    border-radius: 10px;
+    padding: 14px 16px;
+}
+.dash-top-card .dtc-label {
+    font-size: 10px;
+    font-weight: 500;
+    color: #378add;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+.dash-top-card .dtc-value {
+    font-size: 28px;
+    font-weight: 500;
+    color: #e6f1fb;
+    line-height: 1;
+    margin-bottom: 5px;
+}
+.dash-top-card .dtc-meta {
+    font-size: 11px;
+    color: #85b7eb;
+}
+.dtc-meta .up {
+    color: #97c459;
+}
+.dtc-meta .down {
+    color: #154fee;
+}
+
+/* ========================================
+   DASHBOARD — grid meio
+   ======================================== */
+.dash-mid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+/* ========================================
+   DASHBOARD — painéis
+   ======================================== */
+.dash-panel {
+    background: #071020;
+    border: 0.5px solid #0c447c;
+    border-radius: 10px;
+    padding: 14px 16px;
+}
+.dash-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+.dash-panel-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: #b5d4f4;
+}
+.dash-panel-link {
+    font-size: 11px;
+    color: #378add;
+    text-decoration: none;
+}
+.dash-panel-link:hover {
+    color: #85b7eb;
+}
+
+/* ========================================
+   DASHBOARD — alertas
+   ======================================== */
+.alerta-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    background: #0d1f3c;
+    border-radius: 7px;
+    margin-bottom: 6px;
+}
+.alerta-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+.alerta-dot.red {
+    background: #e24b4a;
+}
+.alerta-dot.yellow {
+    background: #ef9f27;
+}
+.alerta-dot.blue {
+    background: #378add;
+}
+.alerta-info {
+    flex: 1;
+}
+.alerta-nome {
+    font-size: 12px;
+    color: #b5d4f4;
+}
+.alerta-sub {
+    font-size: 10px;
+    color: #378add;
+    margin-top: 1px;
+}
+
+/* ========================================
+   DASHBOARD — barras
+   ======================================== */
+.bar-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 9px;
+}
+.bar-label {
+    width: 100px;
+    font-size: 11px;
+    color: #378add;
+    text-align: right;
+    flex-shrink: 0;
+}
+.bar-track {
+    flex: 1;
+    height: 8px;
+    background: #0d1f3c;
+    border-radius: 4px;
+    overflow: hidden;
+}
+.bar-fill {
+    height: 100%;
+    border-radius: 4px;
+}
+.bar-val {
+    width: 30px;
+    font-size: 11px;
+    font-weight: 500;
+    color: #b5d4f4;
+    text-align: right;
+    flex-shrink: 0;
+}
+
+/* ========================================
+   DASHBOARD — badges
+   ======================================== */
+.badge-s {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: 99px;
+    font-size: 10px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+.badge-s.danger {
+    background: #501313;
+    color: #f09595;
+}
+.badge-s.warn {
+    background: #412402;
+    color: #fac775;
+}
+.badge-s.monitor {
+    background: #042c53;
+    color: #85b7eb;
+}
+.badge-s.ok {
+    background: #173404;
+    color: #97c459;
+}
+
+/* ========================================
+   DASHBOARD — tabela inferior
+   ======================================== */
+.dash-table {
+    background: #071020;
+    border: 0.5px solid #0c447c;
+    border-radius: 10px;
+    padding: 14px 16px;
+}
+.dash-table table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+.dash-table th {
+    text-align: left;
+    font-size: 10px;
+    font-weight: 500;
+    color: #378add;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0 10px 9px;
+    border-bottom: 0.5px solid #0c447c;
+}
+.dash-table td {
+    padding: 9px 10px;
+    border-bottom: 0.5px solid #0d1f3c;
+    color: #b5d4f4;
+    vertical-align: middle;
+}
+.dash-table tr:last-child td {
+    border-bottom: none;
+}
+.dash-table tr:hover td {
+    background: #0d1f3c;
+}
