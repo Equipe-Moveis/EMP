@@ -371,3 +371,23 @@ table tbody tr:hover td {
 .dash-table tr:hover td {
     background: #0d1f3c;
 }
+
+nav .btn-sair {
+    height: 64px;
+    line-height: 60px;
+    padding: 0 10px;
+    font-size: 1rem;
+    text-transform: none;
+    color: #85b7eb;
+    border-radius: 0;
+}
+nav .btn-sair:hover {
+    color: #e6f1fb;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+nav .btn-sair i {
+    height: 64px;
+    line-height: 64px;
+    font-size: 24px;
+    margin-right: 15px;
+}
