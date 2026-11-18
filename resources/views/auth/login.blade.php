@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login — Equipe Móveis</title>
-    <link rel="icon" href="{{ asset('/public/images/Gemini_logo.png') }}">
+    <link rel="icon" href="{{ asset('images/logo-emp-icone-clara.png') }}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -18,7 +18,7 @@
             <div class="card">
                 <div class="card-content center-align">
 
-                    <img src="{{ asset('/Gemini_logo.png') }}" alt="Logo" style="max-width: 155px;">
+                    <img src="{{ asset('images/logo-emp-icone-clara.png') }}" alt="Logo" style="max-width: 155px;">
 
                     {{-- route('login.store') gera a URL pelo NOME da rota. --}}
                     <form action="{{ route('login.store') }}" method="POST" novalidate>
