@@ -7,6 +7,7 @@ Use App\Http\Controllers\DashboardController;
 
     $links = [
     ['rota' => 'dashboard',           'icone' => 'dashboard',      'texto' => 'Dashboard'],
+    ['rota' => 'categorias.index', 'icone' => 'label', 'texto' => 'Categorias'],
     ['rota' => 'moveis.index',        'icone' => 'chair',          'texto' => 'Móveis'],
     ['rota' => 'produtos.index',      'icone' => 'inventory_2',    'texto' => 'Produtos'],
     ['rota' => 'fornecedores.index',  'icone' => 'local_shipping', 'texto' => 'Fornecedores'],
