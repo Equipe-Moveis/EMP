@@ -14,7 +14,7 @@ class UserController extends Controller
     {
         $busca  = $request->input('busca');
         $perfil = $request->input('perfil');
-
+     
         $usuarios = User::query()
             ->when($busca, function ($query, $busca) {
                 $query->where(function ($q) use ($busca) {
