@@ -151,225 +151,298 @@ table tbody tr:hover td {
 }
 
 /* ========================================
-   DASHBOARD — cards do topo
+   DASHBOARD — cabeçalho
    ======================================== */
-.dash-top {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    margin-bottom: 16px;
+.dash {
+    padding-bottom: 40px;
 }
-.dash-top-card {
-    background: #071020;
-    border: 0.5px solid #0c447c;
-    border-radius: 10px;
-    padding: 14px 16px;
-}
-.dash-top-card .dtc-label {
-    font-size: 10px;
-    font-weight: 500;
-    color: #378add;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 6px;
-}
-.dash-top-card .dtc-value {
-    font-size: 28px;
-    font-weight: 500;
-    color: #e6f1fb;
-    line-height: 1;
-    margin-bottom: 5px;
-}
-.dash-top-card .dtc-meta {
-    font-size: 11px;
-    color: #85b7eb;
-}
-.dtc-meta .up {
-    color: #97c459;
-}
-.dtc-meta .down {
-    color: #154fee;
-}
-
-/* ========================================
-   DASHBOARD — grid meio
-   ======================================== */
-.dash-mid {
-    display: grid;
-    grid-template-columns: 1fr 1.4fr;
-    gap: 10px;
-    margin-bottom: 16px;
-}
-
-/* ========================================
-   DASHBOARD — painéis
-   ======================================== */
-.dash-panel {
-    background: #071020;
-    border: 0.5px solid #0c447c;
-    border-radius: 10px;
-    padding: 14px 16px;
-}
-.dash-panel-header {
+.dash-header {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
+    align-items: baseline;
     justify-content: space-between;
-    margin-bottom: 12px;
+    gap: 4px 24px;
+    margin-bottom: 22px;
 }
-.dash-panel-title {
-    font-size: 13px;
-    font-weight: 500;
-    color: #b5d4f4;
+.dash-title {
+    margin: 0;
+    font-size: 27px;
+    font-weight: 400;
+    line-height: 1.2;
+    color: #e6f1fb;
 }
-.dash-panel-link {
-    font-size: 11px;
-    color: #378add;
-    text-decoration: none;
-}
-.dash-panel-link:hover {
-    color: #85b7eb;
-}
-
-/* ========================================
-   DASHBOARD — alertas
-   ======================================== */
-.alerta-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 10px;
-    background: #0d1f3c;
-    border-radius: 7px;
-    margin-bottom: 6px;
-}
-.alerta-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    flex-shrink: 0;
-}
-.alerta-dot.red {
-    background: #e24b4a;
-}
-.alerta-dot.yellow {
-    background: #ef9f27;
-}
-.alerta-dot.blue {
-    background: #378add;
-}
-.alerta-info {
-    flex: 1;
-}
-.alerta-nome {
-    font-size: 12px;
-    color: #b5d4f4;
-}
-.alerta-sub {
-    font-size: 10px;
-    color: #378add;
-    margin-top: 1px;
+.dash-date {
+    margin: 0;
+    font-size: 17px;
+    color: #94a8c6;
 }
 
 /* ========================================
-   DASHBOARD — barras
+   DASHBOARD — cards do topo
+   Uma faixa só: o fundo da grade aparece no
+   espaço de 1px entre os cards e vira a linha divisória.
    ======================================== */
-.bar-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 9px;
-}
-.bar-label {
-    width: 100px;
-    font-size: 11px;
-    color: #378add;
-    text-align: right;
-    flex-shrink: 0;
-}
-.bar-track {
-    flex: 1;
-    height: 8px;
-    background: #0d1f3c;
-    border-radius: 4px;
+.dash-kpis {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1px;
+    margin-bottom: 22px;
+    background-color: #1e385d;
+    border: 1px solid #183257;
+    border-radius: 8px;
     overflow: hidden;
 }
-.bar-fill {
-    height: 100%;
-    border-radius: 4px;
+.dash-kpi {
+    padding: 20px 24px 18px;
+    background-color: #11264a;
 }
-.bar-val {
-    width: 30px;
-    font-size: 11px;
-    font-weight: 500;
-    color: #b5d4f4;
-    text-align: right;
-    flex-shrink: 0;
+.dash-kpi-label {
+    margin: 0;
+    font-size: 14px;
+    line-height: 21px;
+    color: #94a8c6;
 }
-
-/* ========================================
-   DASHBOARD — badges
-   ======================================== */
-.badge-s {
-    display: inline-flex;
-    align-items: center;
-    padding: 2px 8px;
-    border-radius: 99px;
-    font-size: 10px;
-    font-weight: 500;
+.dash-kpi-value {
+    margin: 4px 0 0;
+    font-size: clamp(26px, 2.6vw, 34px);
+    font-weight: 300;
+    line-height: 1.15;
+    color: #e6f1fb;
     white-space: nowrap;
 }
-.badge-s.danger {
-    background: #501313;
-    color: #f09595;
-}
-.badge-s.warn {
-    background: #412402;
-    color: #fac775;
-}
-.badge-s.monitor {
-    background: #042c53;
-    color: #85b7eb;
-}
-.badge-s.ok {
-    background: #173404;
-    color: #97c459;
+.dash-kpi-meta {
+    margin: 4px 0 0;
+    font-size: 13px;
+    line-height: 20px;
+    color: #7489ad;
 }
 
 /* ========================================
-   DASHBOARD — tabela inferior
+   DASHBOARD — cards (Repor estoque, Últimos móveis, Movimentações)
    ======================================== */
+.dash-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.43fr) minmax(0, 1fr);
+    gap: 24px;
+    margin-bottom: 22px;
+}
+.dash-card {
+    padding: 20px 24px;
+    background-color: #11264a;
+    border: 1px solid #183257;
+    border-radius: 8px;
+}
+.dash-card-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+}
+.dash-card-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    color: #e6f1fb;
+}
+.dash-card-link {
+    font-size: 14px;
+    color: #94a8c6;
+}
+.dash-card-link:hover {
+    color: #e6f1fb;
+}
+
+/* Cabeçalho da lista (Produto | Atual / mínimo) */
+.dash-list-head {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #213b62;
+    font-size: 13px;
+    line-height: 20px;
+    color: #8fa6c8;
+}
+
+/* Linhas das listas */
+.dash-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 11px 0 10px;
+    border-top: 1px solid #213b62;
+}
+.dash-list-head + .dash-row,
+.dash-moveis .dash-row:first-child {
+    border-top: none;
+}
+.dash-moveis {
+    margin-top: 4px;
+}
+.dash-row-main {
+    min-width: 0;
+}
+.dash-row-title {
+    margin: 0;
+    font-size: 16px;
+    line-height: 24px;
+    color: #e6f1fb;
+}
+.dash-row-sub {
+    margin: 2px 0 0;
+    font-size: 13px;
+    line-height: 20px;
+    color: #8fa6c8;
+}
+
+/* Estoque atual / mínimo + barra */
+.dash-estoque {
+    flex: 0 0 145px;
+    padding-top: 4px;
+    text-align: right;
+}
+.dash-estoque-numeros {
+    margin: 0;
+    font-size: 14px;
+    line-height: 24px;
+    color: #8fa6c8;
+    white-space: nowrap;
+}
+.dash-estoque-atual {
+    font-size: 16px;
+    color: #e6f1fb;
+}
+.dash-bar {
+    height: 3px;
+    margin-top: 6px;
+    overflow: hidden;
+    background-color: #193963;
+    border-radius: 2px;
+}
+.dash-bar-fill {
+    height: 100%;
+    background-color: #e0a850;
+    border-radius: 2px;
+}
+
+/* Preço do móvel */
+.dash-preco {
+    margin: 0;
+    font-size: 16px;
+    line-height: 24px;
+    color: #e6f1fb;
+    white-space: nowrap;
+}
+
+/* Lista vazia */
+.dash-empty {
+    margin: 16px 0 4px;
+    font-size: 14px;
+    color: #8fa6c8;
+}
+
+/* ========================================
+   DASHBOARD — tabela de movimentações
+   (o !important é para vencer as regras gerais de "TABELAS" acima)
+   ======================================== */
+.dash-table-wrap {
+    margin-top: 14px;
+    overflow-x: auto;
+}
 .dash-table {
-    background: #071020;
-    border: 0.5px solid #0c447c;
-    border-radius: 10px;
-    padding: 14px 16px;
-}
-.dash-table table {
     width: 100%;
+    min-width: 640px;
+    table-layout: fixed;
     border-collapse: collapse;
-    font-size: 12px;
+    background-color: transparent !important;
 }
-.dash-table th {
-    text-align: left;
-    font-size: 10px;
-    font-weight: 500;
-    color: #378add;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    padding: 0 10px 9px;
-    border-bottom: 0.5px solid #0c447c;
+.dash-table tr {
+    border-bottom: 1px solid #213b62;
 }
-.dash-table td {
-    padding: 9px 10px;
-    border-bottom: 0.5px solid #0d1f3c;
-    color: #b5d4f4;
-    vertical-align: middle;
-}
-.dash-table tr:last-child td {
+.dash-table tbody tr:last-child {
     border-bottom: none;
 }
-.dash-table tr:hover td {
-    background: #0d1f3c;
+.dash-table th,
+.dash-table td {
+    padding: 0;
+    border-radius: 0;
+    background-color: transparent !important;
+}
+.dash-table thead th {
+    padding-bottom: 10px;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #8fa6c8 !important;
+}
+.dash-table tbody td {
+    height: 45px;
+    overflow: hidden;
+    font-size: 16px;
+    color: #e6f1fb !important;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.dash-table tbody tr:hover td {
+    background-color: transparent !important;
+}
+.dash-table .col-data {
+    width: 15.7%;
+}
+.dash-table .col-produto {
+    width: 41.2%;
+}
+.dash-table .col-tipo {
+    width: 11.2%;
+}
+.dash-table .col-qtd {
+    width: 5.6%;
+    text-align: right;
+}
+.dash-table .col-saldo {
+    width: 7.8%;
+    text-align: right;
+}
+.dash-table .col-responsavel {
+    width: 18.5%;
+    padding-left: 16px;
+}
+.dash-table td.col-data {
+    color: #8fa6c8 !important;
+}
+.dash-table td.col-responsavel {
+    color: #94a8c6 !important;
+}
+.dash-table td.dash-entrada {
+    color: #74c2a8 !important;
+}
+
+/* Valor em alerta (zerado / abaixo do mínimo) */
+.dash-alerta {
+    color: #df8f9c;
+}
+
+/* ========================================
+   DASHBOARD — telas menores
+   ======================================== */
+@media only screen and (max-width: 992px) {
+    .dash-kpis {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .dash-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+@media only screen and (max-width: 600px) {
+    .dash-kpis {
+        grid-template-columns: minmax(0, 1fr);
+    }
+    .dash-kpi,
+    .dash-card {
+        padding: 16px;
+    }
 }
 
 nav .btn-sair {
