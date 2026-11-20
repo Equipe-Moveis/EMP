@@ -12,7 +12,8 @@ class FornecedorController extends Controller
      */
     public function index()
     {
-        //
+        $fornecedores = Fornecedor::orderBy("nome")->get();
+        return view("fornecedores.index", compact("fornecedores"));
     }
 
     /**
@@ -20,7 +21,7 @@ class FornecedorController extends Controller
      */
     public function create()
     {
-        //
+        return view("fornecedores.create");
     }
 
     /**
@@ -28,25 +29,26 @@ class FornecedorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dados = $request->validate([
+            "nome" => "required|min:3|max:30|string",
+            "cnpj" => "required",
+            "email" => "required|min:3|max:50",
+            "telefone" => "required|min:7|max:11",
+            "cidade" => "required|min:3|max:30|string",
+            "uf" => "required",
+        ]);
+        Fornecedor::create($dados);
+        return redirect()->route("fornecedores.index")->with("success","Fornecedor Criado com sucesso!");
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Fornecedor $fornecedor)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+ 
     public function edit(Fornecedor $fornecedor)
     {
-        //
-    }
+        $fornecedor = Fornecedor::findOrFail( $fornecedor->id );
+        return view("fornecedores.edit", compact("fornecedor"));
 
+    }
     /**
      * Update the specified resource in storage.
      */

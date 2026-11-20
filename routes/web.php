@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\FornecedorController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,5 +33,8 @@ Route::middleware('auth')->group(function () {
             ->except('show')
             ->parameters(['usuarios' => 'usuario']);
         Route::resource('categorias', CategoriaController::class)->except('show');
+        Route::resource('fornecedores', FornecedorController::class)
+            ->except('show')
+            ->parameters(['fornecedores' => 'fornecedor']);
     });
 });
