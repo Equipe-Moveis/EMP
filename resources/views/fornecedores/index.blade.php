@@ -1,4 +1,4 @@
-@extends("layouts.app");
+@extends("layouts.app")
 @section("content")
 <div class="container" style="margin-top: 30px;">
         <div class="row valign-wrapper">
@@ -30,7 +30,7 @@
                     <td>{{ $fornecedor->nome }}</td>
                     <td>{{ $fornecedor->cnpj }}</td>
                     <td>{{ $fornecedor->telefone }}</td>
-                    <td{{  $fornecedor->cidade }}></td>
+                    <td>{{ $fornecedor->cidade }}</td>
                     <td>{{ $fornecedor->uf }}</td>
                     <td>
                         <form action={{ route("fornecedores.edit", $fornecedor) }}  style="display:inline;">
@@ -39,7 +39,7 @@
                                 <i class="material-icons">edit</i>
                             </button>
                         </form>
-                        <form action="opRemFornecedor.php" method="POST" style="display:inline;"
+                        <form action={{ route("fornecedores.destroy", $fornecedor) }} method="POST" style="display:inline;"
                               onsubmit="return confirm('Deseja excluir este fornecedor?')">
                          @csrf
                          @method("delete")
