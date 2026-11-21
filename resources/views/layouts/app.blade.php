@@ -24,8 +24,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="{{ asset('js/init.js') }}"></script>
 
-    @if (session('sucesso'))
-        <script>M.toast({html: @json(session('sucesso')), classes: 'green darken-1'});</script>
+    @if (session('sucesso') || session('success'))
+        <script>M.toast({html: @json(session('sucesso') ?? session('success')), classes: 'green darken-1'});</script>
     @endif
     @if (session('erro'))
         <script>M.toast({html: @json(session('erro')), classes: 'red darken-2'});</script>

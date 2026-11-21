@@ -32,7 +32,7 @@
                                 <i class="material-icons">edit</i>
                             </button>
                         </form>
-                        <form action="{{ route("categorias.destroy", $categoria) }}" method="POST" style="display:inline;">
+                        <form action="{{ route("categorias.destroy", $categoria) }}" method="POST" onsubmit="return confirm('Deseja excluir esta categoria?')">
                             @csrf
                             @method("DELETE")
                             <button type="submit" class="btn-small red waves-effect waves-light">

@@ -2,64 +2,80 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
+use App\Models\Fornecedor;
 use App\Models\Produto;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class ProdutoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function index(): View
     {
-        //
+        $produtos = Produto::ativos()
+            ->with(['categoria', 'fornecedor'])
+            ->orderBy('descricao')
+            ->get();
+
+        return view('produtos.index', compact('produtos'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function create(): View
     {
-        //
+        $fornecedores = Fornecedor::orderBy('nome')->get();
+        $categorias = Categoria::orderBy('descricao')->get();
+
+        return view('produtos.create', compact('fornecedores', 'categorias'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        //
+        $dados = $request->validate([
+            'descricao' => 'required|string|min:3|max:60',
+            'categoria_id' => 'required|exists:categorias,id',
+            'fornecedor_id' => 'required|exists:fornecedores,id',
+            'preco_custo' => 'required|numeric|min:0|max:99999999.99',
+            'preco_venda' => 'required|numeric|min:0|max:99999999.99',
+            'estoque_atual' => 'required|integer|min:0',
+            'estoque_minimo' => 'required|integer|min:0',
+        ]);
+
+        Produto::create($dados);
+
+        return redirect()->route('produtos.index')->with('success', 'Produto criado com sucesso!');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Produto $produto)
+    public function edit(Produto $produto): View
     {
-        //
+        $fornecedores = Fornecedor::orderBy('nome')->get();
+        $categorias = Categoria::orderBy('descricao')->get();
+
+        return view('produtos.edit', compact('produto', 'fornecedores', 'categorias'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Produto $produto)
+    public function update(Request $request, Produto $produto): RedirectResponse
     {
-        //
+        $dados = $request->validate([
+            'descricao' => 'required|string|min:3|max:60',
+            'categoria_id' => 'required|exists:categorias,id',
+            'fornecedor_id' => 'required|exists:fornecedores,id',
+            'preco_custo' => 'required|numeric|min:0|max:99999999.99',
+            'preco_venda' => 'required|numeric|min:0|max:99999999.99',
+            'estoque_atual' => 'required|integer|min:0',
+            'estoque_minimo' => 'required|integer|min:0',
+        ]);
+
+        $produto->update($dados);
+
+        return redirect()->route('produtos.index')->with('success', 'Produto editado com sucesso!');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Produto $produto)
+    public function destroy(Produto $produto): RedirectResponse
     {
-        //
-    }
+        // Exclusão lógica: preserva o histórico de movimentações e os itens de móvel vinculados.
+        $produto->update(['ativo' => false]);
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Produto $produto)
-    {
-        //
+        return redirect()->route('produtos.index')->with('success', 'Produto desativado com sucesso!');
     }
 }
