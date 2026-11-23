@@ -6,23 +6,15 @@ use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-// Validação do cadastro e da edição de móveis.
-// O formulário manda os dados do móvel + uma LISTA de materiais (itens):
-//   itens[0][produto_id] = 3   itens[0][quantidade] = 10
-//   itens[1][produto_id] = 5   itens[1][quantidade] = 4
-// No PHP puro eram os arrays id_produto[] e quantidade[] separados.
+
 class MovelRequest extends FormRequest
 {
-    // Quem chega aqui já passou pelo middleware 'auth' da rota (está logado).
-    // Admin e funcionário podem cadastrar móveis, então é true.
+    
     public function authorize(): bool
     {
         return true;
     }
 
-    // Antes de validar: joga fora as linhas de material que vieram vazias
-    // (produto não escolhido e quantidade em branco). Assim, na edição, a pessoa
-    // pode deixar a linha em branco quando não quer adicionar nada.
     protected function prepareForValidation(): void
     {
         $itens = collect($this->input('itens', []))
@@ -48,13 +40,8 @@ class MovelRequest extends FormRequest
             'data_cadastro' => ['required', 'date', 'before_or_equal:today'],
             'observacao'    => ['nullable', 'string', 'max:255'],
 
-            // Cadastro: precisa de pelo menos 1 material (era o 'sem_itens' do DAL).
-            // Edição: adicionar materiais é opcional.
             'itens' => $editando ? ['nullable', 'array'] : ['required', 'array', 'min:1'],
 
-            // itens.* = "cada linha da lista".
-            // distinct: o mesmo produto não pode aparecer em duas linhas.
-            // exists com where: só aceita produto que existe E está ativo.
             'itens.*.produto_id' => [
                 'required',
                 'distinct',
