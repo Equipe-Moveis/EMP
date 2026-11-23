@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FornecedorController;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\MovelController;
 use Illuminate\Support\Facades\Route;
 
 // A raiz manda para o dashboard; se não estiver logado, o middleware 'auth' leva ao login.
@@ -29,15 +30,22 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+
+    Route::resource('moveis', MovelController::class)
+        ->parameters(['moveis' => 'movel']);
+    
+    Route::resource('categorias', CategoriaController::class)->except('show');
+
+    Route::resource('fornecedores', FornecedorController::class)
+        ->except('show')
+        ->parameters(['fornecedores' => 'fornecedor']);
+        
+    Route::resource('produtos', ProdutoController::class)->except('show');
+
     // ---------- Só admin ----------
     Route::middleware('can:gerenciar-usuarios')->group(function () {
         Route::resource('usuarios', UserController::class)
             ->except('show')
             ->parameters(['usuarios' => 'usuario']);
     });
-    Route::resource('categorias', CategoriaController::class)->except('show');
-        Route::resource('fornecedores', FornecedorController::class)
-            ->except('show')
-            ->parameters(['fornecedores' => 'fornecedor']);
-        Route::resource('produtos', ProdutoController::class)->except('show');
 });
