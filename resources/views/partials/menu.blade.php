@@ -7,7 +7,7 @@ Use App\Http\Controllers\DashboardController;
 
     $links = [
     ['rota' => 'dashboard',           'icone' => 'dashboard',      'texto' => 'Dashboard'],
-    ['rota' => 'categorias.index', 'icone' => 'label', 'texto' => 'Categorias'],
+    ['rota' => 'categorias.index',    'icone' => 'label',          'texto' => 'Categorias'],
     ['rota' => 'moveis.index',        'icone' => 'chair',          'texto' => 'Móveis'],
     ['rota' => 'produtos.index',      'icone' => 'inventory_2',    'texto' => 'Produtos'],
     ['rota' => 'fornecedores.index',  'icone' => 'local_shipping', 'texto' => 'Fornecedores'],
@@ -19,7 +19,6 @@ Use App\Http\Controllers\DashboardController;
 
 <nav id="menu-principal">
     <div class="nav-wrapper">
-        {{-- Logo: versão clara (branca), porque o fundo da navbar é escuro. --}}
         <a href="{{ route('dashboard') }}" class="brand-logo left" style="display:flex; align-items:center; margin-left:15px;">
             <img src="{{ asset('images/logo-emp-icone-clara.png') }}" alt="Equipe Móveis" style="height:46px;">
         </a>
@@ -57,15 +56,6 @@ Use App\Http\Controllers\DashboardController;
                     </a>
                 </li>
             @endcan
-
-            {{-- Logout é POST com token CSRF, não um link comum. --}}
-            <li>
-                <form action="{{ route('logout') }}" method="POST" style="display:inline;">
-                    @csrf
-                    <button type="submit" class="btn-flat" style="height:64px; color:#85b7eb;">
-                    </button>
-                </form>
-            </li>
         </ul>
     </div>
 </nav>
@@ -91,16 +81,5 @@ Use App\Http\Controllers\DashboardController;
             @endif
         @endif
     @endforeach
-    @can('gerenciar-usuarios')
-        <li><a href="{{ route('usuarios.index') }}"><i class="material-icons">people</i>Usuários</a></li>
-    @endcan
     <li class="divider"></li>
-    <li>
-        <form action="{{ route('logout') }}" method="POST">
-            @csrf
-            <button type="submit" class="btn-flat" style="width:100%; text-align:left; padding-left:32px; color:#85b7eb;">
-                <i class="material-icons left">logout</i>Sair
-            </button>
-        </form>
-    </li>
 </ul>

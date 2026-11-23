@@ -56,8 +56,7 @@ class UserController extends Controller
             unset($dados['password']);
         }
 
-        // Proteção: o admin não pode tirar o próprio perfil de admin,
-        // senão ele mesmo perderia o acesso a esta tela.
+        // Proteção: o admin não pode tirar o próprio perfil de admin.
         if ($usuario->is($request->user()) && $dados['perfil'] !== 'admin') {
             return back()->withInput()
                 ->withErrors(['perfil' => 'Você não pode remover o seu próprio perfil de administrador.']);
@@ -71,7 +70,6 @@ class UserController extends Controller
 
     public function destroy(Request $request, User $usuario): RedirectResponse
     {
-        // Não deixa o admin apagar a própria conta enquanto está logado nela.
         if ($usuario->is($request->user())) {
             return back()->with('erro', 'Você não pode excluir o seu próprio usuário.');
         }

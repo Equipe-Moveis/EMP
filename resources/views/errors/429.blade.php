@@ -1,10 +1,5 @@
 {{--
     429 = MUITAS TENTATIVAS. Vem do throttle:5,1 na rota POST /login do web.php:
-    no máximo 5 tentativas de login por minuto. Protege contra quem fica
-    chutando senhas (ataque de força bruta).
-
-    $exception é o erro que o Laravel passa para a página. No 429 ele traz o
-    cabeçalho Retry-After = quantos segundos faltam para poder tentar de novo.
 --}}
 @extends('errors.layout')
 

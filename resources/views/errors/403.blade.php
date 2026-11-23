@@ -1,7 +1,5 @@
 {{--
     403 = ACESSO NEGADO. A pessoa está logada, mas não tem permissão.
-    Acontece quando um funcionário tenta abrir /usuarios (bloqueado pelo can:gerenciar-usuarios).
-    O Laravel procura sozinho resources/views/errors/403.blade.php quando dá esse erro.
 --}}
 @extends('errors.layout')
 
