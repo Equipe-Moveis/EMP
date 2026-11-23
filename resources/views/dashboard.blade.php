@@ -143,7 +143,7 @@
                                 <td class="col-data">{{ $movimentacao->created_at->format('d/m H:i') }}</td>
                                 <td class="col-produto">{{ $movimentacao->produto->descricao }}</td>
                                 <td @class(['col-tipo', 'dash-entrada' => $entrada])>{{ $entrada ? 'Entrada' : 'Saída' }}</td>
-                                <td @class(['col-qtd', 'dash-entrada' => $entrada])>{{ $entrada ? '+' : '−' }}{{ $movimentacao->quantidade }}</td>
+                                <td @class(['col-qtd', 'dash-entrada' => $entrada])>{{ $entrada ? '+' : '' }}{{ $movimentacao->quantidade }}</td>
                                 <td class="col-saldo">{{ $movimentacao->estoque_apos }}</td>
                                 <td class="col-responsavel">{{ $movimentacao->user->name }}</td>
                             </tr>
