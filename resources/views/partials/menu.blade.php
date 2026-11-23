@@ -11,7 +11,7 @@ Use App\Http\Controllers\DashboardController;
     ['rota' => 'moveis.index',        'icone' => 'chair',          'texto' => 'Móveis'],
     ['rota' => 'produtos.index',      'icone' => 'inventory_2',    'texto' => 'Produtos'],
     ['rota' => 'fornecedores.index',  'icone' => 'local_shipping', 'texto' => 'Fornecedores'],
-    ['rota' => 'usuarios.index',      'icone' => 'people',         'texto' => 'Usuários'],
+    ['rota' => 'usuarios.index',      'icone' => 'people',         'texto' => 'Usuários',    'admin' => true],
     ['rota' => 'logout',              'icone' => 'logout',         'texto' => 'Sair'],
     ];
     
@@ -30,7 +30,7 @@ Use App\Http\Controllers\DashboardController;
         <ul class="right hide-on-med-and-down">
             {{-- Links de todos --}}
                         @foreach ($links as $link)
-                @if (Route::has($link['rota']))
+                @if (Route::has($link['rota']) && (empty($link['admin']) || auth()->user()->can('gerenciar-usuarios')))
                     @if ($link['rota'] === 'logout')
                         <li>
                             <form action="{{ route('logout') }}" method="POST" style="display:inline;">
@@ -66,7 +66,7 @@ Use App\Http\Controllers\DashboardController;
         <img src="{{ asset('images/logo-emp-clara.png') }}" alt="Equipe Móveis" style="width:70%;">
     </li>
         @foreach ($links as $link)
-        @if (Route::has($link['rota']))
+        @if (Route::has($link['rota']) && (empty($link['admin']) || auth()->user()->can('gerenciar-usuarios')))
             @if ($link['rota'] === 'logout')
                 <li>
                     <form action="{{ route('logout') }}" method="POST">

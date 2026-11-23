@@ -34,10 +34,10 @@ Route::middleware('auth')->group(function () {
         Route::resource('usuarios', UserController::class)
             ->except('show')
             ->parameters(['usuarios' => 'usuario']);
-        Route::resource('categorias', CategoriaController::class)->except('show');
+    });
+    Route::resource('categorias', CategoriaController::class)->except('show');
         Route::resource('fornecedores', FornecedorController::class)
             ->except('show')
             ->parameters(['fornecedores' => 'fornecedor']);
         Route::resource('produtos', ProdutoController::class)->except('show');
-    });
 });
