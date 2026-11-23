@@ -1,7 +1,5 @@
 {{--
     404 = NÃO ENCONTRADO. A URL não existe, ou o registro não existe
-    (ex.: /usuarios/999/edit com um id que não está no banco: o Route Model Binding
-    responde 404 sozinho).
 --}}
 @extends('errors.layout')
 

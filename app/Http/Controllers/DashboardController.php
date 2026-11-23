@@ -18,7 +18,6 @@ class DashboardController extends Controller
     public function index(): View
     {
         // ---------- Cards do topo ----------
-        // Os scopes ativos() e estoqueBaixo() já existem no model Produto.
         $produtosAtivos = Produto::ativos()->count();
         $fornecedoresDosAtivos = Produto::ativos()->distinct()->count('fornecedor_id');
         $abaixoDoMinimo = Produto::ativos()->estoqueBaixo()->count();
@@ -27,7 +26,6 @@ class DashboardController extends Controller
         $moveisCadastrados = Movel::count();
 
         // ---------- Repor estoque ----------
-        // Do mais crítico para o menos crítico: quanto menor atual/mínimo, mais urgente.
         // O "* 1.0" evita divisão inteira (12 / 30 daria 0) e o NULLIF evita dividir por zero.
         $produtosParaRepor = Produto::ativos()
             ->estoqueBaixo()
@@ -54,7 +52,7 @@ class DashboardController extends Controller
             ->take(5)
             ->get();
 
-        // "Quarta-feira, 18 de novembro de 2026"
+        // ---------- Data de hoje ----------
         $hoje = Str::ucfirst(now()->locale('pt_BR')->translatedFormat('l, j \d\e F \d\e Y'));
 
         return view('dashboard', compact(

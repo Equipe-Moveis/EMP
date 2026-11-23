@@ -6,7 +6,7 @@
 
     <title>@yield('title', 'Equipe Móveis') — Equipe Móveis</title>
 
-    <link rel="icon" href="{{ asset('/Gemini_logo.png') }}">
+    <link rel="icon" href="{{ asset('images/logo-emp-icone-clara.png') }}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">

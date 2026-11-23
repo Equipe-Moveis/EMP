@@ -22,7 +22,6 @@
 
                     {{-- route('login.store') gera a URL pelo NOME da rota. --}}
                     <form action="{{ route('login.store') }}" method="POST" novalidate>
-                        {{-- @csrf: campo escondido com um token; o Laravel recusa POST sem ele. --}}
                         @csrf
 
                         <div class="input-field">

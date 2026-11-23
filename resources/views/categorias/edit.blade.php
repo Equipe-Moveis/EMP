@@ -22,7 +22,7 @@
                     <button class="btn waves-effect waves-light" type="submit">
                         <i class="material-icons left">save</i>Salvar
                     </button>
-                    <a href="lstCategoria.php" class="btn waves-effect waves-light grey darken-1" style="margin-left: 8px;">
+                    <a href="{{ route('categorias.index') }}" class="btn waves-effect waves-light grey darken-1" style="margin-left: 8px;">
                         <i class="material-icons left">cancel</i>Cancelar
                     </a>
                 </div>

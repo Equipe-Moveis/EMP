@@ -1,8 +1,5 @@
 {{--
     419 = PÁGINA EXPIRADA. O token CSRF (@csrf) do formulário venceu.
-    Acontece quando a pessoa deixa um formulário aberto muito tempo (a sessão expira,
-    SESSION_LIFETIME no .env, padrão 120 minutos) ou faz logout em outra aba e
-    depois tenta enviar o formulário.
 --}}
 @extends('errors.layout')
 

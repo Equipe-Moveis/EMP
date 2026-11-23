@@ -1,4 +1,4 @@
-{{-- LISTA DE USUÁRIOS (era o lstUsuario.php) + formulário de filtro. --}}
+{{-- LISTA DE USUÁRIOS --}}
 @extends('layouts.app')
 
 @section('title', 'Usuários')
